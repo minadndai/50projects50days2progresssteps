@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+
+:root {
+    --line-border-fill: #ef4f4f;
+    --line-border-empty: #e0e0e0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f6f7fb;
+    font-family: 'Muli', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+.progress-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 30px;
+    max-width: 100%;
+    width: 350px;
+}
+
+.progress-container::before {
+    content: "";
+    background-color: var(--line-border-empty);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 100%;
+    z-index: -1;
+}
+
+.progress {
+    background-color: var(--line-border-fill);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 0%;
+    z-index: -1;
+    transition: .4s ease;
+}
+
+.circle {
+    background-color: #fff;
+    color: #999;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--line-border-empty);
+    transition: .4s ease;
+}
+
+.circle.active { 
+    border-color: var(--line-border-fill);
+}
+
+.btn {
+    background-color: var(--line-border-fill);
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 8px 30px;
+    margin: 5px;
+    font-size: 14px;
+}
+ 
+.btn:active {
+    transform: scale(.98);
+}
+
+.btn:focus {
+    outline: 0;
+}
+
+.btn:disabled {
+    background-color: var(--line-border-empty);
+    cursor: not-allowed;
+}
+
+.heart {
+    height: 15px;
+    width: 15px;
+    background: var(--line-border-fill);
+    position: absolute;
+    top: -3vmin;
+    right: 1vmin;
+    transform: rotate(-45deg);
+    box-shadow: -10px 10px 80px var(--line-border-fill);
+    visibility: hidden;
+    animation: heart 0.7s linear infinite;
+}
+
+@keyframes heart{
+    0% {
+        transform: rotate(-45deg) scale(1.0);
+    }
+    60% {
+        transform: rotate(-45deg) scale(0.8);
+    }
+    100% {
+        transform: rotate(-45deg) scale(0.6);
+    }
+}
+
+.heart:before {
+    content: "";
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    left: 3%;
+    background: var(--line-border-fill);
+    top: -50%;
+    border-radius: 50px;
+}
+
+.heart:after {
+    content: "";
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    background: var(--line-border-fill);
+    right: -50%;
+    border-radius: 50px;
+}
